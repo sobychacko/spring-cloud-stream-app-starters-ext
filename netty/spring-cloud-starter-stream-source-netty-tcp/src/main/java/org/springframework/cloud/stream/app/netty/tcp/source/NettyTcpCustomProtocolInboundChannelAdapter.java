@@ -19,6 +19,8 @@ public class NettyTcpCustomProtocolInboundChannelAdapter extends MessageProducer
 
 	private final ServerBootstrap serverBootstrap;
 	private final ChannelInboundHandler inboundHandler;
+	private String host;
+	private int port;
 
 	public NettyTcpCustomProtocolInboundChannelAdapter(ServerBootstrap serverBootstrap,
 													   ChannelInboundHandler inboundHandler) {
@@ -43,6 +45,14 @@ public class NettyTcpCustomProtocolInboundChannelAdapter extends MessageProducer
 			}
 		});
 
+	}
+
+	public void setHost(String host) {
+		this.host = host;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
 	}
 
 	class MessageProducingHandler extends SimpleChannelInboundHandler<ByteBuf> {
